@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/realglobe-Inc/clay-serial#readme",
   "dependencies": {
-    "clay-constants": "^1.0.1"
+    "clay-constants": "^1.1.1"
   },
   "devDependencies": {
     "amocha": "^2.0.0",
