@@ -28,7 +28,21 @@ describe('serialize', function () {
       quz: 12
     })
     deepEqual(Object.keys(serialized), [ 'foo', 'baz', 'quz' ])
+  }))
 
+  it('Recursive', () => co(function * () {
+    let recursive = serialize.recursive({
+      foo: 'bar',
+      baz: new Date('2012/12/12'),
+      quz: 12,
+      nested: {
+        nestedFoo: 'bar2',
+        nestedBaz: new Date('2012/12/13'),
+        nestedQuz: 13
+      }
+    })
+    deepEqual(Object.keys(recursive), [ 'foo', 'baz', 'quz', 'nested' ])
+    deepEqual(Object.keys(recursive.nested), [ 'nestedFoo', 'nestedBaz', 'nestedQuz' ])
   }))
 })
 
