@@ -10,33 +10,37 @@ const { commentsInFile } = require('ape-doc')
 const aglob = require('aglob')
 
 module.exports = readmeMdBud({
-    pkg,
-    repo: pkg.repository,
-    sections: 'doc/guides/*.md.hbs',
-    badges: {
-      // TODO OSS
-      // travis: true,
-      travisCom: true,
-      travisComToken: 'aeFzCpBZebyaRijpCFmm',
-      npm: true,
-      standard: true
-    },
-    overview: 'doc/overview.md',
-    links: require('./doc/links'),
-    vars: {
-      funcs: aglob.sync('lib/*.js')
-        .filter((filename) => !/index\.js$/.test(filename))
-    .map((filename) => {
-    let [ comments ] = commentsInFile(filename)
-    let [ func ] = comments.function
-    return {
-      name: func.name,
-      description: comments.description,
-      params: comments.param,
-      returns: comments.returns && comments.returns[ 0 ]
-    }
-  })
-}
+  pkg,
+  repo: pkg.repository,
+  sections: 'doc/guides/*.md.hbs',
+  badges: {
+    // TODO OSS
+    // travis: true,
+    travisCom: true,
+    travisComToken: 'aeFzCpBZebyaRijpCFmm',
+    npm: true,
+    standard: true
+  },
+  overview: 'doc/overview.md',
+  links: require('./doc/links'),
+  vars: {
+    funcs: aglob.sync('lib/*.js')
+      .filter((filename) => !/index\.js$/.test(filename))
+      .map((filename) => {
+        return commentsInFile(filename)
+          .filter((comment) => comment.function && comment.function.length > 0)
+          .map((comment) => {
+            let [ func ] = comment.function
+            return {
+              name: func.name,
+              description: comment.description,
+              params: comment.param,
+              returns: comment.returns && comment.returns[ 0 ]
+            }
+          })
+      })
+      .reduce((funcs, found) => funcs.concat(found), [])
+  }
 })
 
 if (!module.parent) {
