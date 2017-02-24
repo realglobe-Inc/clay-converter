@@ -109,7 +109,7 @@ Available functions
 | ---- | ----------- |
 | `deserialize(Serialized) -> Object` | Deserialize value |
 | `deserialize.all(values) -> Object.<string, Serialized>` | Deserialize object properties |
-| `deserialize.all(values) -> Object.<string, Serialized>` | Deserialize recursively |
+| `deserialize.recursive(values) -> Object.<string, Serialized>` | Deserialize recursively |
 | `serialize(value) -> Serialized` | Serialize value |
 | `serialize.all(values) -> Object.<string, Serialized>` | Serialize object properties |
 | `serialize.recursive(values) -> Object.<string, Serialized>` | Serialize recursively |
