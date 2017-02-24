@@ -20,8 +20,8 @@ describe('deserialize', function () {
   }))
 
   it('Deserialize', () => co(function * () {
-    equal(deserialize({ '$type': 'clay:string', '$value': 'bar' }), 'bar')
-    equal(deserialize({ '$type': 'clay:number', '$value': 12 }), 12)
+    equal(deserialize({ $$serial: true, $type: 'clay:string', $value: 'bar' }), 'bar')
+    equal(deserialize({ $$serial: true, $type: 'clay:number', $value: 12 }), 12)
   }))
 })
 

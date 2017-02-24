@@ -20,8 +20,8 @@ describe('serialize', function () {
   }))
 
   it('Serialize', () => co(function * () {
-    deepEqual(serialize('bar'), { '$type': 'clay:string', '$value': 'bar' })
-    deepEqual(serialize(12), { '$type': 'clay:number', '$value': 12 })
+    deepEqual(serialize('bar'), { '$$serial': true, $type: 'clay:string', $value: 'bar' })
+    deepEqual(serialize(12), { '$$serial': true, $type: 'clay:number', $value: 12 })
     let serialized = serialize.all({
       foo: 'bar',
       baz: new Date('2012/12/12'),
