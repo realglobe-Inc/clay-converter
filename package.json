@@ -23,9 +23,11 @@
   },
   "homepage": "https://github.com/realglobe-Inc/clay-serial#readme",
   "dependencies": {
-    "clay-constants": "^1.1.1"
+    "clay-constants": "^2.5.1"
   },
   "devDependencies": {
+    "ababel": "^2.0.1",
+    "ababel-es2015": "^2.0.1",
     "amocha": "^2.0.0",
     "ape-doc": "^2.0.4",
     "ape-formatting": "^1.0.2",
