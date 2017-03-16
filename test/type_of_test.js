@@ -5,11 +5,11 @@
 'use strict'
 
 const typeOf = require('../lib/type_of.js')
-const {strictEqual} = require('assert')
+const { strictEqual } = require('assert')
 const co = require('co')
 
 const { SerialTypes } = require('clay-constants')
-const { NUMBER, STRING, BOOLEAN, DATE, OBJECT, NULL } = SerialTypes
+const { NUMBER, STRING, BOOLEAN, DATE, OBJECT, REF, NULL } = SerialTypes
 
 describe('type-of', function () {
   this.timeout(3000)
@@ -32,6 +32,7 @@ describe('type-of', function () {
     strictEqual(typeOf(null), NULL)
     strictEqual(typeOf(undefined), NULL)
     strictEqual(typeOf({}), OBJECT)
+    strictEqual(typeOf({ $ref: 'Org#1' }), REF)
   }))
 })
 

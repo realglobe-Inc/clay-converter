@@ -9,7 +9,7 @@ const { strictEqual, deepEqual, ok } = require('assert')
 const co = require('co')
 
 const { SerialTypes } = require('clay-constants')
-const { NUMBER, STRING, BOOLEAN, DATE, OBJECT, NULL } = SerialTypes
+const { NUMBER, STRING, BOOLEAN, DATE, OBJECT, REF, NULL } = SerialTypes
 
 describe('with-type', function () {
   this.timeout(3000)
@@ -32,6 +32,7 @@ describe('with-type', function () {
     strictEqual(withType(null, NULL), null)
     strictEqual(withType(0, NULL), null)
     deepEqual(withType({ foo: 'bar' }, OBJECT), { foo: 'bar' })
+    deepEqual(withType({ foo: { $ref: 'Foo#1' } }, REF), { foo: { '$ref': 'Foo#1' } })
     ok(withType('2012-12-12', DATE) instanceof Date)
   }))
 })
