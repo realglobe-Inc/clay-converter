@@ -5,6 +5,8 @@
 'use strict'
 
 const deserialize = require('../lib/deserialize.js')
+const serialize = require('../lib/serialize.js')
+const clayEntity = require('clay-entity')
 const { equal, ok, strictEqual } = require('assert')
 const co = require('co')
 
@@ -47,6 +49,14 @@ describe('deserialize', function () {
     ok(deserialized.baz instanceof Date)
     equal(deserialized.nested.nestedFoo, 'bar2')
     strictEqual(deserialized.nested.nestedQuz, 13)
+  }))
+
+  it('Entity', () => co(function * () {
+    let serialized = serialize({
+      entity: clayEntity({ foo: 'bar' })
+    })
+    let deserialized = deserialize(serialized)
+    equal(deserialized.entity.foo, 'bar')
   }))
 })
 

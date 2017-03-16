@@ -5,7 +5,8 @@
 'use strict'
 
 const serialize = require('../lib/serialize.js')
-const { deepEqual } = require('assert')
+const clayEntity = require('clay-entity')
+const { ok, equal, deepEqual } = require('assert')
 const co = require('co')
 
 describe('serialize', function () {
@@ -43,6 +44,14 @@ describe('serialize', function () {
     })
     deepEqual(Object.keys(recursive), [ 'foo', 'baz', 'quz', 'nested' ])
     deepEqual(Object.keys(recursive.nested), [ 'nestedFoo', 'nestedBaz', 'nestedQuz' ])
+  }))
+
+  it('Entity', () => co(function * () {
+    let serialized = serialize({
+      entity: clayEntity({ foo: 'bar' })
+    })
+    ok(serialized)
+    equal(serialized.$value.entity.foo, 'bar')
   }))
 })
 
