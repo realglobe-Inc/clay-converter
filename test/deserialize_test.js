@@ -22,27 +22,27 @@ describe('deserialize', function () {
   }))
 
   it('Deserialize', () => co(function * () {
-    equal(deserialize({ $$serial: true, $type: 'clay:string', $value: 'bar' }), 'bar')
-    equal(deserialize({ $$serial: true, $type: 'clay:number', $value: 12 }), 12)
+    equal(deserialize({ $$serial: true, $type: 'cly:string', $value: 'bar' }), 'bar')
+    equal(deserialize({ $$serial: true, $type: 'cly:number', $value: 12 }), 12)
   }))
 
   it('Recursively', () => co(function * () {
     let deserialized = deserialize.recursive({
-      foo: { $$serial: true, $type: 'clay:string', $value: 'bar' },
+      foo: { $$serial: true, $type: 'cly:string', $value: 'bar' },
       baz: {
         $$serial: true,
-        $type: 'clay:date',
+        $type: 'cly:date',
         $value: '2012-12-11T15:00:00.000Z'
       },
-      quz: { $$serial: true, $type: 'clay:number', $value: 12 },
+      quz: { $$serial: true, $type: 'cly:number', $value: 12 },
       nested: {
-        nestedFoo: { $$serial: true, $type: 'clay:string', $value: 'bar2' },
+        nestedFoo: { $$serial: true, $type: 'cly:string', $value: 'bar2' },
         nestedBaz: {
           $$serial: true,
-          $type: 'clay:date',
+          $type: 'cly:date',
           $value: '2012-12-12T15:00:00.000Z'
         },
-        nestedQuz: { $$serial: true, $type: 'clay:number', $value: 13 }
+        nestedQuz: { $$serial: true, $type: 'cly:number', $value: 13 }
       }
     })
     equal(deserialized.foo, 'bar')
@@ -57,6 +57,21 @@ describe('deserialize', function () {
     })
     let deserialized = deserialize(serialized)
     equal(deserialized.entity.foo, 'bar')
+  }))
+
+  it('Run example', () => co(function * () {
+    let book = {
+      title: 'Wonderful Banana',
+      version: 15,
+      publishedAt: new Date('2012/12/12')
+    }
+
+    let serialized = serialize.all(book)
+
+    console.log(serialized) // Serialized value
+
+    let deserialized = deserialize.all(serialized)
+    console.log(deserialized) // Restore the original data
   }))
 })
 
