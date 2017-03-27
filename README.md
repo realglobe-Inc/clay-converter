@@ -87,7 +87,7 @@ const { serialize, deserialize } = require('clay-serial')
 
   console.log(serialized) // Serialized value
 
-  let deserialized = deserialize.all(values, meta)
+  let deserialized = deserialize.all(serialized)
   console.log(deserialized) // Restore the original data
 }
 
