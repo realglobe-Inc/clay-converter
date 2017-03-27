@@ -7,6 +7,7 @@
 const deserialize = require('../lib/deserialize.js')
 const serialize = require('../lib/serialize.js')
 const clayEntity = require('clay-entity')
+const clayId = require('clay-id')
 const { equal, ok, strictEqual } = require('assert')
 const co = require('co')
 
@@ -57,6 +58,17 @@ describe('deserialize', function () {
     })
     let deserialized = deserialize(serialized)
     equal(deserialized.entity.foo, 'bar')
+  }))
+
+  it('ID', () => co(function * () {
+    let id = clayId()
+    let serialized = serialize({
+      id
+    })
+    let deserialized = deserialize(serialized)
+    equal(deserialized.id.$$id, true)
+    equal(String(deserialized.id), String(id))
+    ok(clayId.isId(deserialized.id))
   }))
 
   it('Run example', () => co(function * () {
