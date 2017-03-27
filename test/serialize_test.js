@@ -7,6 +7,7 @@
 const serialize = require('../lib/serialize.js')
 const clayEntity = require('clay-entity')
 const { ok, equal, deepEqual } = require('assert')
+const clayId = require('clay-id')
 const co = require('co')
 
 describe('serialize', function () {
@@ -40,10 +41,12 @@ describe('serialize', function () {
         nestedFoo: 'bar2',
         nestedBaz: new Date('2012/12/13'),
         nestedQuz: 13
-      }
+      },
+      someId: clayId()
     })
-    deepEqual(Object.keys(recursive), [ 'foo', 'baz', 'quz', 'nested' ])
+    deepEqual(Object.keys(recursive), [ 'foo', 'baz', 'quz', 'nested', 'someId' ])
     deepEqual(Object.keys(recursive.nested), [ 'nestedFoo', 'nestedBaz', 'nestedQuz' ])
+    ok(recursive.someId)
   }))
 
   it('Entity', () => co(function * () {
