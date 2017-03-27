@@ -1,6 +1,6 @@
 {
   "name": "clay-serial",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Conberter for ClayDB",
   "browser": "shim/browser",
   "main": "lib",
