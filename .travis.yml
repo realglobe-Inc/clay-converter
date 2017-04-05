@@ -2,13 +2,9 @@ language: node_js
 node_js:
 - '6'
 before_install:
-# TODO OSS
-# - npm i npm-cli-login -g
-# - npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
-# - npm who
-- echo "registry = https://realglobe.artifactoryonline.com/realglobe/api/npm/npm-virtual" > $HOME/.npmrc
-- curl -u${NPM_USER}:${NPM_PASSWORD} "https://realglobe.artifactoryonline.com/realglobe/api/npm/auth" >> $HOME/.npmrc
-- cat $HOME/.npmrc
+- npm i npm-cli-login -g
+- npm-cli-login -u "${NPM_USER}" -p "${NPM_PASSWORD}" -e "${NPM_EMAIL}"
+- npm who
 install:
 - npm install jsdoc -g
 - npm install
@@ -19,4 +15,4 @@ script:
 after_success:
 - ./ci/travis/publish.js
 env:
-  secure: "fOhuKpxvuxxEyVVCnrUpzwRSYXNUjlT07LObx+dRxqBVa4su7MZDr0L6bjmCGi4rj/xzqacxkGL8UHTyqdgIgngbYjzIaz8h3gsCZltwEWrY9Y/zPgZyE+h05Pw7NBzS+ngYmW879Yr/kHVpNhRouliEEJZs+aPBhb7uZzRSRI4JfXH8/grdNP1zGGsVmdvcWBo5QpC7O/F3wLqH3qR8SQIw1EcHt4br2xJUU9ZD6b/lkSzeK5F7idKaT3Q1t/9uMIInceogn0dsxmY4AVJZoOl4EugTwDO/UgIiF+XLHhKycNljxmD9i83gTKbpB9cd3FaYkX24SD7HxyyW7/vudJCVGPKjd1msp2E0h89oQn4asMIOQMELyH0Kvc1hpCdUzfUKfys5CqPlI65UTExOKRSNDw1OWyWbaJ8/4nDJT2Qcltua3sLDpfAZSfIhpfBobcE4aHQs477SUCgsojUNOSRjzLASgOKwv7wEcDTtG8bPxCXa0GtiGUWvj+p44Jn95WLTrtaSwhJKuk5iZ9OnLxWFTdtVbYkVnc5cRVzRSqTRGUVNnEpA0rKbI01drXq0sOGMtY5yJymzkM1FUkoTd27oQOJCjEgd/Djbv9fMv+dILcSCBMfgU3tCc8RrJcpUkcaRSL/1lv4ZXGWU0JeuEHugepaVtUr7VCbE2+mYaxM="
+  secure: "ryI8WnpPdVX5DhBwJLyYnal6RY0Yg+4l5K0mmFf+iyCpk44xNUBkpdWEcQUskz9anPjaXZIrKuE9cGliBUE3WCNNn3tUIQRDLP8fgzK1WkuHMYFhT+2FbBM3/cC0n5kop1AvydGdXp4oPsAUIXzp7W0POzBsBCkbqaEeYjLykBZdqePPT0MTZkde5c6Hxzbpw91gHvd8Aoyimtj3uiWETDuMxPYICEJirXr/DXfNSsdEpT00nFletU+cq3Jx1TFxZiPP8Z2g9vWhd1B6uR/+JbdRyfAz7VxGX90EUIRwBrlYL80Nft0hQwZUurwg6+SUTBpUKVfQ6s3lq8+XwVqx6k7SZt7F2u3M5coHuwcEXPA0YA4uQHlQwUFjhpD97PGlWTAbmRcpIQ2DpYhKqmTA8GckwtYskF8NZoRPZhKHHT+B9dcIDTLg4rA3mghCi1uHmZn/LHDlH3fRHA3UTfDr02XODXTbApRr/3i/qxilYHiOnPFKhHXsovmykqw4HBGuWGrfflNAKqsLXRPp73wyKWf4KUJVIFWCGKNr2Lb8DXYwoWjjswwMAJ61uAzfNYfTjEpINcgSCDKb87975Uwf3qw3ZzvlbftSnh8uDGLyVMGY0+P5R3JaBM5zXDFuKrIjbcxamfn2iddmEGsDHZ55ya6lx/CJV6YlWFmF6YAbUiI="
