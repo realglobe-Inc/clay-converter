@@ -26,7 +26,7 @@
     "clay-constants": "^3.0.1",
     "clay-entity": "^2.0.1",
     "clay-id": "^3.0.1",
-    "clay-resource-ref": "^1.0.3"
+    "clay-resource-ref": "^2.0.1"
   },
   "devDependencies": {
     "ababel": "^2.0.1",
