@@ -23,8 +23,8 @@
   },
   "homepage": "https://github.com/realglobe-Inc/clay-serial#readme",
   "dependencies": {
-    "clay-constants": "^3.0.1",
-    "clay-entity": "^2.0.1",
+    "clay-constants": "^3.0.2",
+    "clay-entity": "^2.0.4",
     "clay-id": "^3.0.1",
     "clay-resource-ref": "^2.0.1"
   },
@@ -37,7 +37,7 @@
     "ape-releasing": "^4.0.4",
     "ape-tasking": "^4.0.9",
     "ape-tmpl": "^5.0.20",
-    "ape-updating": "^4.1.0",
+    "ape-updating": "^4.1.1",
     "co": "^4.6.0",
     "coz": "^6.0.20",
     "injectmock": "^2.0.0",
