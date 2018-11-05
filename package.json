@@ -24,7 +24,7 @@
   "homepage": "https://github.com/realglobe-Inc/clay-serial#readme",
   "dependencies": {
     "clay-constants": "^3.0.2",
-    "clay-entity": "^2.1.9",
+    "clay-entity": "^2.1.10",
     "clay-id": "^3.0.1",
     "clay-resource-ref": "^2.0.7"
   },
